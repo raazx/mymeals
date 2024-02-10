@@ -17,7 +17,14 @@ class TabsScreen extends ConsumerStatefulWidget {
 
 class _TabsScreenState extends ConsumerState<TabsScreen> {
   int _selectedPageIndex = 0;
+
   var activePageTitle = 'Categoriets';
+
+  void _selectPage(int index) {
+    setState(() {
+      _selectedPageIndex = index;
+    });
+  }
 
   void _setScreen(String identifier) async {
     Navigator.of(context).pop();
@@ -55,15 +62,15 @@ class _TabsScreenState extends ConsumerState<TabsScreen> {
         title: Text(activePageTitle),
       ),
       bottomNavigationBar: BottomNavigationBar(
-        items: [
-          const BottomNavigationBarItem(
+        items: const [
+          BottomNavigationBarItem(
             icon: Icon(Icons.set_meal),
             label: 'Categories',
           ),
-          const BottomNavigationBarItem(
+          BottomNavigationBarItem(
               icon: Icon(Icons.favorite), label: 'Favorite'),
         ],
-        onTap: (_) {},
+        onTap: _selectPage,
       ),
       body: activePage,
     );
