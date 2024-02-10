@@ -54,11 +54,14 @@ class MealsScreen extends StatelessWidget {
         appBar: AppBar(title: Text(title!)),
         body: ListView.builder(
           itemCount: meals.length,
-          itemBuilder: (ctx, index) => MealItem(
-            meal: meals[index],
-            onSelectMeal: (meal) {
-              selectMeal(context, meal);
-            },
+          itemBuilder: (ctx, index) => Hero(
+            tag: meals[index].id,
+            child: MealItem(
+              meal: meals[index],
+              onSelectMeal: (meal) {
+                selectMeal(context, meal);
+              },
+            ),
           ),
         ),
       );
