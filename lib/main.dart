@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:mymeals/screens/categories.dart';
-import 'package:mymeals/screens/meals_screen.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import 'package:mymeals/screens/tabs.dart';
 
 final kColorSchemeLight = ColorScheme.fromSeed(
@@ -17,7 +17,7 @@ void main() {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
-  ]).then((value) => runApp(const MyApp()));
+  ]).then((value) => runApp(const ProviderScope(child: MyApp())));
   // runApp(const MyApp());
 }
 
